@@ -12,8 +12,22 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Петя'},
 ]
-# ???
 
+names_students = []
+for student in students:
+    name_student = student['first_name']
+    amount_name = 0
+    for student in students:
+        if name_student == student['first_name']:
+            amount_name += 1
+    answer = f'{name_student}: {amount_name}'
+    if names_students == False:
+        names_students.append(answer)
+    elif answer in names_students:
+        pass
+    else:
+        names_students.append(answer)
+print('\n'.join(names_students))
 
 # Задание 2
 # Дан список учеников, нужно вывести самое часто повторящееся имя
@@ -26,8 +40,27 @@ students = [
     {'first_name': 'Маша'},
     {'first_name': 'Оля'},
 ]
-# ???
 
+names_students = {}
+for student in students:
+    name_student = student['first_name']
+    amount_name = 0
+    for student in students:
+        if name_student == student['first_name']:
+            amount_name += 1
+    if names_students == False:
+        names_students[name_student] = amount_name
+    elif answer in names_students:
+        pass
+    else:
+        names_students[name_student] = amount_name
+
+counter = 0
+for key, value in names_students.items():
+    if value > counter:
+        search_name = key
+        counter = value
+print(f'Самое частое имя среди учеников: {search_name}')
 
 # Задание 3
 # Есть список учеников в нескольких классах, нужно вывести самое частое имя в каждом классе.
@@ -51,8 +84,29 @@ school_students = [
         {'first_name': 'Саша'},
     ],
 ]
-# ???
 
+number_class = 1
+for students in school_students:
+    names_students = {}
+    for student in students:
+        name_student = student['first_name']
+        amount_name = 0
+        for student in students:
+            if name_student == student['first_name']:
+                amount_name += 1
+        if names_students == False:
+            names_students[name_student] = amount_name
+        elif answer in names_students:
+            pass
+        else:
+            names_students[name_student] = amount_name
+    counter = 0
+    for key, value in names_students.items():
+        if value > counter:
+            search_name = key
+            counter = value
+    print(f'Самое частое имя в классе {number_class}: {search_name}')
+    number_class += 1
 
 # Задание 4
 # Для каждого класса нужно вывести количество девочек и мальчиков в нём.
@@ -72,8 +126,16 @@ is_male = {
     'Миша': True,
     'Даша': False,
 }
-# ???
 
+for class_in_school in school:
+    amount_m = 0
+    amount_f = 0
+    for students in class_in_school['students']:
+        if is_male[students['first_name']] == True:
+            amount_m += 1
+        else:
+            amount_f += 1
+    print(f'Класс {class_in_school["class"]}: девочки {amount_f}, мальчики {amount_m}.')
 
 # Задание 5
 # По информации о учениках разных классов нужно найти класс, в котором больше всего девочек и больше всего мальчиков
@@ -91,5 +153,13 @@ is_male = {
     'Олег': True,
     'Миша': True,
 }
-# ???
 
+for class_in_school in school:
+    amount_m = 0
+    amount_f = 0
+    for students in class_in_school['students']:
+        if is_male[students['first_name']] == True:
+            amount_m += 1
+        else:
+            amount_f += 1
+    print(f'Класс {class_in_school["class"]}: девочки {amount_f}, мальчики {amount_m}.')
